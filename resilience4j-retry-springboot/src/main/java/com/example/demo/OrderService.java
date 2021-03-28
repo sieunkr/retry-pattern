@@ -1,15 +1,18 @@
 package com.example.demo;
 
+import io.github.resilience4j.retry.annotation.Retry;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 public class OrderService {
 
-    @CustomRetry(attempts = 3, delay = 5)
+    @Retry(name = "retryOrder")
     public double randomFail() {
 
         double random = getRandom();
-        if (random <= 0.5) {
+        if (random <= 1) {
             throw new RuntimeException("Value <= 0.5");
         }
         return random;
