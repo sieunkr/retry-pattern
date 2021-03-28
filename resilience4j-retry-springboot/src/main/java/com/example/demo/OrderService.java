@@ -12,7 +12,7 @@ public class OrderService {
     public double randomFail() {
 
         double random = getRandom();
-        if (random <= 1) {
+        if (random <= 0.5) {
             throw new RuntimeException("Value <= 0.5");
         }
         return random;
