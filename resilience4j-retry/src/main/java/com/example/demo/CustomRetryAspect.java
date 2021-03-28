@@ -33,7 +33,7 @@ public class CustomRetryAspect {
 
         RetryConfig config = RetryConfig.custom()
                 .maxAttempts(3)
-                .waitDuration(Duration.of(2, SECONDS))
+                .waitDuration(Duration.of(5, SECONDS))
                 .build();
         var retryRegistry = RetryRegistry.of(config);
         var retry = retryRegistry.retry(method.getName(), config);
